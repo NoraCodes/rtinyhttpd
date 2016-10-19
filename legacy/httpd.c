@@ -22,7 +22,8 @@
 #include <strings.h>
 #include <string.h>
 #include <sys/stat.h>
-#include <pthread.h>
+// Commented out in order to build on Linux
+//#include <pthread.h>
 #include <sys/wait.h>
 #include <stdlib.h>
 
@@ -505,7 +506,8 @@ int main(void)
 	u_short port = 9999;
 	struct sockaddr_in client_name;
 	socklen_t client_name_len = sizeof(client_name);
-	pthread_t newthread;
+    // Commented out to build on Linux
+	//pthread_t newthread;
 
 	signal(SIGPIPE, SIG_IGN);
 
@@ -520,10 +522,12 @@ int main(void)
 			error_die("accept");
 		}
 
-		if (pthread_create(&newthread , NULL, (void *)accept_request, (void *)&client_sock) != 0)
+        // Commented out in order to build on Linux
+		/* if (pthread_create(&newthread , NULL, (void *)accept_request, (void *)&client_sock) != 0)
 		{
 			perror("pthread_create");
 		}
+        */
 	}
 
 	close(server_sock);
