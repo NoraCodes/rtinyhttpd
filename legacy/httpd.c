@@ -17,13 +17,12 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-#include <unistd.h>
+#include <unistd.h> 
 #include <ctype.h>
 #include <strings.h>
 #include <string.h>
 #include <sys/stat.h>
-// Commented out in order to build on Linux
-//#include <pthread.h>
+#include <pthread.h>
 #include <sys/wait.h>
 #include <stdlib.h>
 
@@ -499,15 +498,13 @@ void unimplemented(int client)
 
 /**********************************************************************/
 
-int main(void)
-{
+int main(void) {
 	int server_sock = -1;
 	int client_sock = -1;
 	u_short port = 9999;
 	struct sockaddr_in client_name;
 	socklen_t client_name_len = sizeof(client_name);
-    // Commented out to build on Linux
-	//pthread_t newthread;
+	pthread_t newthread;
 
 	signal(SIGPIPE, SIG_IGN);
 
@@ -522,12 +519,11 @@ int main(void)
 			error_die("accept");
 		}
 
-        // Commented out in order to build on Linux
-		/* if (pthread_create(&newthread , NULL, (void *)accept_request, (void *)&client_sock) != 0)
+		if (pthread_create(&newthread , NULL, (void *)accept_request, (void *)&client_sock) != 0)
 		{
 			perror("pthread_create");
 		}
-        */
+        
 	}
 
 	close(server_sock);
