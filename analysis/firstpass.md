@@ -11,6 +11,17 @@ time.
 probably allows little configuration). This should be changed.
 + Ignores SIGPIPE, which should be appropriately handled.
 
+Pseudocode:
+
+```
+Open and configure a server socket
+
+Until the process is terminated:
+     Wait for a client to request a connection
+     Try to open a connection with that client
+     Open a new thread to deal with that connection's request
+```
+
 ### startup()
 
 + Takes a reference to a `u_short`, which it modifies to provide dynamic
