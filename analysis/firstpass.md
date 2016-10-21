@@ -64,3 +64,7 @@ accept_request takes a socket connecting to the client
      otherwise:
           handle serving a static file
 ```
+
+### error handlers
+
+All the error handlers do the same thing, and there is some duplicate code. Perhaps abstract this into a single function that takes a status code, a title, and a message?
