@@ -68,3 +68,24 @@ accept_request takes a socket connecting to the client
 ### error handlers
 
 All the error handlers do the same thing, and there is some duplicate code. Perhaps abstract this into a single function that takes a status code, a title, and a message?
+
+### serve_file
+
+```
+Read and discard all HTTP headers from the client
+Open the requested resource for reading
+If opening the requested resource failed:
+     Send the client a Not Found error with not_found
+Otherwise:
+     Send headers to the client using headers()
+     Send the file to the client using cat()
+Clean up the open file
+```
+
+### headers
+Just sends some strings representing headers to the client. Takes a filename but doesn't use it; potentially use `file` or `libmagic` to determine MIME type? Or the Rust crate `mime_guess`.
+
+### cat
+Sends the entire contents of a file out of a socket by filling and emptying a buffer.
+
+Potential performance improvement: adjustable buffer size using `Box`.
