@@ -1,4 +1,6 @@
 mod request;
+mod test_request;
+
 mod response;
 mod http_error;
 
