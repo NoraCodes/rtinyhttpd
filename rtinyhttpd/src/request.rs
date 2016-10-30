@@ -2,6 +2,11 @@
 use std::path::PathBuf;
 use http_error::HTTPError;
 
+// TODO: Move method matching to another function
+// TODO" Add version verification
+// TODO: Do something with the other HTTP headers
+// TODO: Do something with the request body for POST requests
+
 /// Represents the HTTP method used by the client.
 #[derive(Debug, PartialEq)]
 pub enum HTTPMethod {
