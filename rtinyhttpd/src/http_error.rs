@@ -1,5 +1,5 @@
 /// Represents an error that occured in the HTTP pipeline.
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct HTTPError {
     status_code: u16,
     message_title: String,
